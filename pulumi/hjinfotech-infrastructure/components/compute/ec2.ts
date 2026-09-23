@@ -4,7 +4,8 @@ import * as aws from "@pulumi/aws";
 export function createEc2(
     subnetId: pulumi.Input<string>,
     securityGroupId: pulumi.Input<string>,
-    environment: string
+    environment: string,
+    instanceType: pulumi.Input<string>
 ) {
     const ami = aws.ec2.getAmi({
         mostRecent: true,
@@ -22,7 +23,7 @@ export function createEc2(
     });
 
     return new aws.ec2.Instance("app-ec2", {
-        instanceType: "t3.micro",
+        instanceType: instanceType,
         ami: ami.then(a => a.id),
         subnetId: subnetId,
         vpcSecurityGroupIds: [securityGroupId],

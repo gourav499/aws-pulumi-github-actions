@@ -1,5 +1,7 @@
 config:
   aws:region: us-east-1
   hjinfotech-infrastructure:applicationArea: app1
-  hjinfotech-infrastructure:environment: dev  
+  hjinfotech-infrastructure:environment: dev
+  aws-pulumi-github-actions:environment: Dev
+  aws-pulumi-github-actions:instanceType: t3.micro
 encryptionsalt: v1:7lHZH2PfD6c=:v1:xKkoy9A/C2hqdjI5:8LH0aoVA0naBJ0prMb/N34c132vVAQ==
