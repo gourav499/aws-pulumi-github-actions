@@ -33,7 +33,7 @@ jobs:
       - name: Pulumi Preview
         uses: pulumi/actions@v6
         with:
-          command: preview
+          command: up
           stack-name: dev-app1
           work-dir: pulumi/hjinfotech-infrastructure
         env:
