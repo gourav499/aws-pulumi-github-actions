@@ -9,10 +9,10 @@ permissions:
 
 jobs:
 
-  # -------------------------
+  # =========================
   # DEV - PREVIEW
-  # -------------------------
-  pulumi-dev-preview:
+  # =========================
+  dev-preview:
     runs-on: ubuntu-latest
 
     steps:
@@ -44,11 +44,11 @@ jobs:
           PULUMI_BACKEND_URL: s3://aws-pulumi-github-actions-state
           PULUMI_CONFIG_PASSPHRASE: ""
 
-  # -------------------------
+  # =========================
   # DEV - APPROVAL + UP
-  # -------------------------
-  pulumi-dev-up:
-    needs: pulumi-dev-preview
+  # =========================
+  dev-up:
+    needs: dev-preview
     runs-on: ubuntu-latest
     environment: dev
 
@@ -76,6 +76,152 @@ jobs:
         with:
           command: up
           stack-name: dev-app1
+          work-dir: pulumi/hjinfotech-infrastructure
+        env:
+          PULUMI_BACKEND_URL: s3://aws-pulumi-github-actions-state
+          PULUMI_CONFIG_PASSPHRASE: ""
+
+  # =========================
+  # STAGE - PREVIEW
+  # =========================
+  stage-preview:
+    needs: dev-up
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        working-directory: pulumi/hjinfotech-infrastructure
+        run: npm ci
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: us-east-1
+
+      - name: Pulumi Preview
+        uses: pulumi/actions@v6
+        with:
+          command: preview
+          stack-name: stage-app1
+          work-dir: pulumi/hjinfotech-infrastructure
+        env:
+          PULUMI_BACKEND_URL: s3://aws-pulumi-github-actions-state
+          PULUMI_CONFIG_PASSPHRASE: ""
+
+  # =========================
+  # STAGE - APPROVAL + UP
+  # =========================
+  stage-up:
+    needs: stage-preview
+    runs-on: ubuntu-latest
+    environment: stage
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        working-directory: pulumi/hjinfotech-infrastructure
+        run: npm ci
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: us-east-1
+
+      - name: Pulumi Up
+        uses: pulumi/actions@v6
+        with:
+          command: up
+          stack-name: stage-app1
+          work-dir: pulumi/hjinfotech-infrastructure
+        env:
+          PULUMI_BACKEND_URL: s3://aws-pulumi-github-actions-state
+          PULUMI_CONFIG_PASSPHRASE: ""
+
+  # =========================
+  # PROD - PREVIEW
+  # =========================
+  prod-preview:
+    needs: stage-up
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        working-directory: pulumi/hjinfotech-infrastructure
+        run: npm ci
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: us-east-1
+
+      - name: Pulumi Preview
+        uses: pulumi/actions@v6
+        with:
+          command: preview
+          stack-name: prod-app1
+          work-dir: pulumi/hjinfotech-infrastructure
+        env:
+          PULUMI_BACKEND_URL: s3://aws-pulumi-github-actions-state
+          PULUMI_CONFIG_PASSPHRASE: ""
+
+  # =========================
+  # PROD - APPROVAL + UP
+  # =========================
+  prod-up:
+    needs: prod-preview
+    runs-on: ubuntu-latest
+    environment: prod
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        working-directory: pulumi/hjinfotech-infrastructure
+        run: npm ci
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: us-east-1
+
+      - name: Pulumi Up
+        uses: pulumi/actions@v6
+        with:
+          command: up
+          stack-name: prod-app1
           work-dir: pulumi/hjinfotech-infrastructure
         env:
           PULUMI_BACKEND_URL: s3://aws-pulumi-github-actions-state
