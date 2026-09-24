@@ -7,24 +7,11 @@ export function createEc2(
     environment: string,
     instanceType: pulumi.Input<string>
 ) {
-    const ami = aws.ec2.getAmi({
-        mostRecent: true,
-        owners: ["amazon"],
-        filters: [
-            {
-                name: "name",
-                values: ["al2023-ami-*-x86_64"],
-            },
-            {
-                name: "state",
-                values: ["available"],
-            },
-        ],
-    });
+    const ami = "ami-0b2c9d1f3edcfd709"
 
     return new aws.ec2.Instance("app-ec2", {
         instanceType: instanceType,
-        ami: ami.then(a => a.id),
+        ami: ami,
         subnetId: subnetId,
         vpcSecurityGroupIds: [securityGroupId],
 
