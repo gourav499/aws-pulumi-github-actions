@@ -1644,4 +1644,4 @@ Official documentation used to verify the implementation model and operational g
 
 **Gourav Tiwari**
 
-> *It started as "deploy an EC2." It ended with IaC, CI/CD, OIDC, multi-environment promotion, approval gates, state management, and enough YAML to develop a personal relationship with indentation.*
+> *Funny how a quick task spirals. What was supposed to be a basic EC2 deployment turned into building a massive automated ecosystem—complete with IaC, CI/CD, OIDC, strict multi-environment approvals, and a mild obsession with proper YAML indentation.*
