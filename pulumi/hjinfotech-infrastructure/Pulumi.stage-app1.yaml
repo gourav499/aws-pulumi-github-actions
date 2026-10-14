@@ -1,4 +1,5 @@
-encryptionsalt: v1:UYORtDRKneU=:v1:0R9zzI7Xt+Xsxech:dDdULdUe1quJsfIznpw+lu4/aevbUA==
+encryptionsalt: v1:HBd0BlQT790=:v1:HRtqhwHk2B3RxRQa:fNl9me0Dis56s4uOGDmryi0oh+4buQ==
 config:
+  aws:region: us-east-1
   aws-pulumi-github-actions:environment: Stage
   aws-pulumi-github-actions:instanceType: t3.small

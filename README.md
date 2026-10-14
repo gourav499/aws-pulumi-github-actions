@@ -752,7 +752,7 @@ The Pulumi stack configuration model is designed for exactly this kind of enviro
 The selected Pulumi backend is:
 
 ```text
-s3://aws-pulumi-github-actions-state
+s3://pulumi-state-683541454005-multienv-2026
 ```
 
 The important distinction:
@@ -869,7 +869,7 @@ GitHub's AWS OIDC integration requires an IAM trust relationship that limits whi
 Authenticate to the S3 backend:
 
 ```bash
-pulumi login s3://aws-pulumi-github-actions-state
+pulumi login s3://pulumi-state-683541454005-multienv-2026
 ```
 
 You can also persist the backend choice through `PULUMI_BACKEND_URL`. citeturn832838search9turn593236search3
@@ -944,7 +944,7 @@ aws sts get-caller-identity
 ## 5. Login to Pulumi S3 backend
 
 ```bash
-pulumi login s3://aws-pulumi-github-actions-state
+pulumi login s3://pulumi-state-683541454005-multienv-2026
 ```
 
 ## 6. Select the target stack
