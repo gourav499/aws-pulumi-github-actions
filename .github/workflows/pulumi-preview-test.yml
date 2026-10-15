@@ -42,13 +42,18 @@ jobs:
         run: npm ci
 
       
+      
       - name: Preview Dev stack only
         uses: pulumi/actions@v6
+        env:
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
+          PULUMI_BACKEND_URL: s3://pulumi-state-683541454005-multienv-2026
         with:
           command: preview
           stack-name: dev-app1
           work-dir: pulumi/hjinfotech-infrastructure
           cloud-url: s3://pulumi-state-683541454005-multienv-2026
+
 
 
       
