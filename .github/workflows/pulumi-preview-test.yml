@@ -41,6 +41,16 @@ jobs:
         working-directory: pulumi/hjinfotech-infrastructure
         run: npm ci
 
+      - name: Validate Pulumi passphrase
+        env:
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
+        shell: bash
+        run: |
+          if [ -z "$PULUMI_CONFIG_PASSPHRASE" ]; then
+            echo "::error::Pulumi passphrase secret is missing or empty"
+            exit 1
+          fi
+          echo "Pulumi passphrase secret is present"
       
       
       - name: Preview Dev stack only
