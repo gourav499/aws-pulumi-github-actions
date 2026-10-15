@@ -58,6 +58,13 @@ jobs:
             exit 1
           fi
 
+      - name: Debug Pulumi passphrase
+        env:
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
+        shell: bash
+        run: |
+          echo "Passphrase being used: $PULUMI_CONFIG_PASSPHRASE"
+
       - name: Preview Dev stack only
         uses: pulumi/actions@v6
         env:
