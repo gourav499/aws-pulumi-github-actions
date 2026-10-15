@@ -41,11 +41,14 @@ jobs:
         working-directory: pulumi/hjinfotech-infrastructure
         run: npm ci
 
+      
       - name: Preview Dev stack only
         uses: pulumi/actions@v6
         with:
           command: preview
           stack-name: dev-app1
           work-dir: pulumi/hjinfotech-infrastructure
+          cloud-url: s3://pulumi-state-683541454005-multienv-2026
+
 
       
