@@ -41,15 +41,11 @@ jobs:
         working-directory: pulumi/hjinfotech-infrastructure
         run: npm ci
 
-      - name: Install Pulumi CLI
-        uses: pulumi/actions@v6
-        with:
-          command: version
-          work-dir: pulumi/hjinfotech-infrastructure
-
       - name: Preview Dev stack only
         uses: pulumi/actions@v6
         with:
           command: preview
           stack-name: dev-app1
           work-dir: pulumi/hjinfotech-infrastructure
+
+      
