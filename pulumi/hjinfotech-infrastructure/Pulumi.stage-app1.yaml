@@ -1,4 +1,4 @@
-encryptionsalt: v1:UYORtDRKneU=:v1:0R9zzI7Xt+Xsxech:dDdULdUe1quJsfIznpw+lu4/aevbUA==
 config:
   aws-pulumi-github-actions:environment: Stage
   aws-pulumi-github-actions:instanceType: t3.small
+encryptionsalt: v1:qeXsX/2ejy8=:v1:WpPfj8CzEtD/tk1l:kAdLknRxXwZdy9XjRcuY9AFkGEQ3Cg==
