@@ -1,4 +1,4 @@
-encryptionsalt: v1:iasXFqziPMI=:v1:yjtbNZB7iMy/KMYp:5Mf86neMI6rwko0IT/tTnJBTpL97bw==
 config:
   aws-pulumi-github-actions:environment: Prod
   aws-pulumi-github-actions:instanceType: t3.medium
+encryptionsalt: v1:7q0d4h0Psdc=:v1:4qcOOnXZPkSG23uo:XzLz7nzW/VYIgARq4pOd4dBcpV2zUQ==

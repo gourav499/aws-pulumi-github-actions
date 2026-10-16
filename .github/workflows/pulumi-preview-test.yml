@@ -41,11 +41,25 @@ jobs:
         working-directory: pulumi/hjinfotech-infrastructure
         run: npm ci
 
-      - name: Install Pulumi CLI
+
+      - name: Validate Pulumi passphrase is present
+        env:
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
+        shell: bash
+        run: |
+          if [ -z "$PULUMI_CONFIG_PASSPHRASE" ]; then
+            echo "::error::Passphrase secret is missing or empty"
+            exit 1
+          fi
+          echo "Passphrase secret is present; Pulumi preview will validate stack decryption."
+
+      - name: Preview Dev stack only
         uses: pulumi/actions@v6
+        env:
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
         with:
           command: preview
           stack-name: dev-app1
           work-dir: pulumi/hjinfotech-infrastructure
+          cloud-url: s3://pulumi-state-683541454005-multienv-2026
 
-      
