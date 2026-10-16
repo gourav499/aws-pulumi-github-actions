@@ -4,4 +4,4 @@ config:
   hjinfotech-infrastructure:environment: dev
   aws-pulumi-github-actions:environment: Dev
   aws-pulumi-github-actions:instanceType: t3.micro
-encryptionsalt: v1:7lHZH2PfD6c=:v1:xKkoy9A/C2hqdjI5:8LH0aoVA0naBJ0prMb/N34c132vVAQ==
+encryptionsalt: v1:4enSChRdIW0=:v1:WNo9u5f0YUo/c8CC:DEjVgT3QVTnHkLU3q8FANRHOrWV06Q==

@@ -41,7 +41,7 @@ jobs:
         working-directory: pulumi/hjinfotech-infrastructure
         run: npm ci
 
-      - name: Validate Pulumi passphrase
+      - name: Validate Pulumi passphrase is present
         env:
           PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
         shell: bash
@@ -50,20 +50,7 @@ jobs:
             echo "::error::Passphrase secret is missing or empty"
             exit 1
           fi
-
-          if [ "$PULUMI_CONFIG_PASSPHRASE" = "ss22" ]; then
-            echo "Passphrase matches the locally confirmed value"
-          else
-            echo "::error::Passphrase differs from the locally confirmed value"
-            exit 1
-          fi
-
-      - name: Debug Pulumi passphrase
-        env:
-          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
-        shell: bash
-        run: |
-          echo "Passphrase being used: $PULUMI_CONFIG_PASSPHRASE"
+          echo "Passphrase secret is present; Pulumi preview will validate stack decryption."
 
       - name: Preview Dev stack only
         uses: pulumi/actions@v6
