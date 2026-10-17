@@ -41,8 +41,8 @@ jobs:
           stack-name: dev-app1
           work-dir: pulumi/hjinfotech-infrastructure
         env:
-          PULUMI_BACKEND_URL: s3://aws-pulumi-github-actions-state
-          PULUMI_CONFIG_PASSPHRASE: ""
+          PULUMI_BACKEND_URL: s3://pulumi-state-683541454005-multienv-2026
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
 
   # =========================
   # DEV - APPROVAL + UP
@@ -78,8 +78,8 @@ jobs:
           stack-name: dev-app1
           work-dir: pulumi/hjinfotech-infrastructure
         env:
-          PULUMI_BACKEND_URL: s3://aws-pulumi-github-actions-state
-          PULUMI_CONFIG_PASSPHRASE: ""
+          PULUMI_BACKEND_URL: s3://pulumi-state-683541454005-multienv-2026
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
 
   # =========================
   # STAGE - PREVIEW
@@ -114,8 +114,8 @@ jobs:
           stack-name: stage-app1
           work-dir: pulumi/hjinfotech-infrastructure
         env:
-          PULUMI_BACKEND_URL: s3://aws-pulumi-github-actions-state
-          PULUMI_CONFIG_PASSPHRASE: ""
+          PULUMI_BACKEND_URL: s3://pulumi-state-683541454005-multienv-2026
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
 
   # =========================
   # STAGE - APPROVAL + UP
@@ -151,8 +151,8 @@ jobs:
           stack-name: stage-app1
           work-dir: pulumi/hjinfotech-infrastructure
         env:
-          PULUMI_BACKEND_URL: s3://aws-pulumi-github-actions-state
-          PULUMI_CONFIG_PASSPHRASE: ""
+          PULUMI_BACKEND_URL: s3://pulumi-state-683541454005-multienv-2026
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
 
   # =========================
   # PROD - PREVIEW
@@ -187,8 +187,8 @@ jobs:
           stack-name: prod-app1
           work-dir: pulumi/hjinfotech-infrastructure
         env:
-          PULUMI_BACKEND_URL: s3://aws-pulumi-github-actions-state
-          PULUMI_CONFIG_PASSPHRASE: ""
+          PULUMI_BACKEND_URL: s3://pulumi-state-683541454005-multienv-2026
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
 
   # =========================
   # PROD - APPROVAL + UP
@@ -224,5 +224,5 @@ jobs:
           stack-name: prod-app1
           work-dir: pulumi/hjinfotech-infrastructure
         env:
-          PULUMI_BACKEND_URL: s3://aws-pulumi-github-actions-state
-          PULUMI_CONFIG_PASSPHRASE: ""
+          PULUMI_BACKEND_URL: s3://pulumi-state-683541454005-multienv-2026
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
